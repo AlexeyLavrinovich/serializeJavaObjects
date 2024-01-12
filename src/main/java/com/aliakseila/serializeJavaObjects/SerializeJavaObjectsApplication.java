@@ -2,7 +2,9 @@ package com.aliakseila.serializeJavaObjects;
 
 import com.aliakseila.serializeJavaObjects.entity.CityTrade;
 import com.aliakseila.serializeJavaObjects.entity.ZkbTrade;
+import com.aliakseila.serializeJavaObjects.repository.CityTradeRepo;
 import com.aliakseila.serializeJavaObjects.repository.TradeRepo;
+import com.aliakseila.serializeJavaObjects.repository.ZkbTradeRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -14,6 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SerializeJavaObjectsApplication implements ApplicationRunner {
 
 	private final TradeRepo tradeRepo;
+	private final ZkbTradeRepo zkbTradeRepo;
+	private final CityTradeRepo cityTradeRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SerializeJavaObjectsApplication.class, args);
@@ -31,6 +35,7 @@ public class SerializeJavaObjectsApplication implements ApplicationRunner {
 
 		tradeRepo.save(zkbTrade);
 		tradeRepo.save(cityTrade);
-		System.out.println(tradeRepo.findAllZkbTrades());
+		System.out.println(cityTradeRepo.findAll());
+		System.out.println(zkbTradeRepo.findAll());
 	}
 }
